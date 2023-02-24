@@ -2,28 +2,6 @@
 
 include_once "./include/config.php";
 
-// class modele_coordonnees {
-//     public $adresse;
-//     public $ville;
-//     public $telephone;
-//     public $courriel;
-//     public $site_web;
-
-
-//     /***
-//      * Fonction permettant de construire un objet de type modele_coordonnes
-//      */
-//     public function __construct($coordonnees_adresse, $coordonnees_ville, $coordonnees_telephone, $coordonnees_courriel, $coordonnees_site_web ) {
-       
-//         $this->adresse = $coordonnees_adresse;
-//         $this->ville = $coordonnees_ville;
-//         $this->telephone = $coordonnees_telephone;
-//         $this->courriel = $coordonnees_courriel;
-//         $this->site_web = $coordonnees_site_web;
-
-        
-//     }
-// }
 
 class modele_etablissement {
     public $nom;
@@ -35,7 +13,7 @@ class modele_etablissement {
         $this->description = $description;
 
         $this->coordonnees = new modele_coordonnees($adresse, $ville, $telephone, $courriel, $site_web);
-        // ...
+        
     }
 }
 
@@ -44,14 +22,14 @@ class modele_coordonnees {
     public $ville;
     public $telephone;
     public $courriel;
-    public $site_web;
+    public $siteWeb;
 
     public function __construct($adresse, $ville, $telephone, $courriel, $site_web) {
        $this->adresse = $adresse;
        $this->ville = $ville;
        $this->telephone = $telephone;
        $this->courriel = $courriel;
-       $this->site_web = $site_web;
+       $this->siteWeb = $site_web;
         // ...
     }
 }
@@ -64,17 +42,11 @@ class modele_forfait {
     public $code;
     public $statut;
     public $etablissement;
-    /*public $nom_etablissement;
-    public $adresse;
-    public $ville;
-    public $telephone;
-    public $courriel;
-    public $site_web;
-    public $description_etablissement; */
-    public $date_debut;
-    public $date_fin;
+
+    public $dateDeDebut;
+    public $dateDefin;
     public $prix;
-    public $nouveau_prix;
+    public $nouveauPrix;
 
     public function __construct($id, $image, $nom, $description, $code, $statut,$nom_etablissement,$adresse, $ville, $telephone, $courriel, $site_web, $description_etablissement, $date_debut, $date_fin, $prix, $nouveau_prix) {
         $this->id = $id;
@@ -83,7 +55,7 @@ class modele_forfait {
         $this->description = $description;
         $this->code = $code;
         $this->statut = $statut;
-        $this->etablissement = new modele_etablissement($nom, $description, $adresse, $ville, $telephone, $courriel, $site_web);
+        $this->etablissement = new modele_etablissement($nom, $description_etablissement, $adresse, $ville, $telephone, $courriel, $site_web);
         /*$this->nom_etablissement = $nom_etablissement;
         $this->adresse = $adresse;
         $this->ville = $ville;
@@ -91,10 +63,10 @@ class modele_forfait {
         $this->courriel = $courriel;
         $this->site_web = $site_web;
         $this->description_etablissement = $description_etablissement;*/
-        $this->date_debut = $date_debut;
-        $this->date_fin = $date_fin;
+        $this->dateDeDebut = $date_debut;
+        $this->dateDeFin = $date_fin;
         $this->prix = $prix;
-        $this->nouveau_prix = $nouveau_prix;
+        $this->nouveauPrix = $nouveau_prix;
     }
 
     

@@ -26,8 +26,33 @@ class ControleurForfait {
     function ajouterJSON($data) {
         $resultat = new stdClass();
 
-        if(isset($data['image']) && isset($data['nom']) && isset($data['description']) && isset($data['code']) && isset($data['statut']) && isset($data['etablissement']['nom']) && isset($data['etablissement']['description']) && isset($data['etablissement']['coordonnees']['adresse']) && isset($data['etablissement']['coordonnees']['ville']) && isset($data['etablissement']['coordonnees']['telephone']) && isset($data['etablissement']['coordonnees']['courriel']) && isset($data['etablissement']['coordonnees']['site_web']) && isset($data['date_debut']) && isset($data['date_fin']) && isset($data['prix']) && isset($data['nouveau_prix'])) {
-            $resultat = modele_forfait::ajouter($data['image'], $data['nom'], $data['description'], $data['code'], $data['statut'], $data['etablissement']['nom'],$data['etablissement']['description'], $data['etablissement']['coordonnees']['adresse'], $data['etablissement']['coordonnees']['ville'], $data['etablissement']['coordonnees']['telephone'], $data['etablissement']['coordonnees']['courriel'], $data['etablissement']['coordonnees']['site_web'], $data['date_debut'], $data['date_fin'], $data['prix'], $data['nouveau_prix']);
+        if( isset($data['nom']) 
+            && isset($data['description']) 
+            && isset($data['code']) 
+            && isset($data['statut']) 
+            && isset($data['etablissement']['nom']) 
+            && isset($data['etablissement']['description']) 
+            && isset($data['etablissement']['coordonnees']['adresse']) 
+            && isset($data['etablissement']['coordonnees']['ville']) 
+            && isset($data['etablissement']['coordonnees']['telephone']) 
+            && isset($data['etablissement']['coordonnees']['courriel']) 
+            && isset($data['etablissement']['coordonnees']['siteWeb']) 
+            && isset($data['dateDeDebut']) && isset($data['dateDeFin']) 
+            && isset($data['prix']) && isset($data['nouveauPrix'])) {
+            $resultat = modele_forfait::ajouter('', 
+                $data['nom'], 
+                $data['description'], 
+                $data['code'], 
+                $data['statut'], 
+                $data['etablissement']['nom'],
+                $data['etablissement']['description'], 
+                $data['etablissement']['coordonnees']['adresse'], 
+                $data['etablissement']['coordonnees']['ville'], 
+                $data['etablissement']['coordonnees']['telephone'], 
+                $data['etablissement']['coordonnees']['courriel'], 
+                $data['etablissement']['coordonnees']['siteWeb'], 
+                $data['dateDeDebut'], $data['dateDeFin'], $data['prix'], 
+                $data['nouveauPrix']);
         } else {
             http_response_code(500); // Envoi un code 500 au serimage
             $resultat->message = "Impossible d'ajouter un produit. Des informations sont manquantes";
@@ -41,8 +66,39 @@ class ControleurForfait {
     function modifierJSON($data) {
         $resultat = new stdClass();
         if(isset($_GET['id'])) {
-            if(isset($data['image']) && isset($data['nom']) && isset($data['description']) && isset($data['code']) && isset($data['statut']) && isset($data['etablissement']['nom']) && isset($data['etablissement']['description']) && isset($data['etablissement']['coordonnees']['adresse']) && isset($data['etablissement']['coordonnees']['ville']) && isset($data['etablissement']['coordonnees']['telephone']) && isset($data['etablissement']['coordonnees']['courriel']) && isset($data['etablissement']['coordonnees']['site_web']) && isset($data['date_debut']) && isset($data['date_fin']) && isset($data['prix']) && isset($data['nouveau_prix'])) {
-                $resultat = modele_forfait::modifier($_GET['id'], $data['image'], $data['nom'], $data['description'], $data['code'], $data['statut'], $data['etablissement']['nom'],$data['etablissement']['description'], $data['etablissement']['coordonnees']['adresse'], $data['etablissement']['coordonnees']['ville'], $data['etablissement']['coordonnees']['telephone'], $data['etablissement']['coordonnees']['courriel'], $data['etablissement']['coordonnees']['site_web'], $data['date_debut'], $data['date_fin'], $data['prix'], $data['nouveau_prix']);
+            if(isset($data['image']) 
+            && isset($data['nom']) 
+            && isset($data['description']) 
+            && isset($data['code']) 
+            && isset($data['statut']) 
+            && isset($data['etablissement']['nom']) 
+            && isset($data['etablissement']['description']) 
+            && isset($data['etablissement']['coordonnees']['adresse']) 
+            && isset($data['etablissement']['coordonnees']['ville']) 
+            && isset($data['etablissement']['coordonnees']['telephone']) 
+            && isset($data['etablissement']['coordonnees']['courriel']) 
+            && isset($data['etablissement']['coordonnees']['siteWeb']) 
+            && isset($data['dateDeDebut']) 
+            && isset($data['dateDeFin']) 
+            && isset($data['prix']) 
+            && isset($data['nouveauPrix'])) {
+                $resultat = modele_forfait::modifier($_GET['id'], 
+                $data['image'], 
+                $data['nom'], 
+                $data['description'], 
+                $data['code'], 
+                $data['statut'], 
+                $data['etablissement']['nom'],
+                $data['etablissement']['description'], 
+                $data['etablissement']['coordonnees']['adresse'], 
+                $data['etablissement']['coordonnees']['ville'], 
+                $data['etablissement']['coordonnees']['telephone'], 
+                $data['etablissement']['coordonnees']['courriel'], 
+                $data['etablissement']['coordonnees']['siteWeb'], 
+                $data['dateDeDebut'], 
+                $data['dateDeFin'], 
+                $data['prix'], 
+                $data['nouveauPrix']);
             } else {
                 http_response_code(500); // Envoi un code 500 au serveur
                 $resultat = "Impossible de modifier le forfait. Des informations sont manquantes";
