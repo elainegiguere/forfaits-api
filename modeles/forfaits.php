@@ -55,7 +55,7 @@ class modele_forfait {
         $this->description = $description;
         $this->code = $code;
         $this->statut = $statut;
-        $this->etablissement = new modele_etablissement($nom, $description_etablissement, $adresse, $ville, $telephone, $courriel, $site_web);
+        $this->etablissement = new modele_etablissement($nom_etablissement, $description_etablissement, $adresse, $ville, $telephone, $courriel, $site_web);
         /*$this->nom_etablissement = $nom_etablissement;
         $this->adresse = $adresse;
         $this->ville = $ville;
